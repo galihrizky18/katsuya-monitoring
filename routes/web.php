@@ -16,6 +16,7 @@ use Inertia\Inertia;
 
 
 Route::get("/", [LoginController::class, "show"])->name("LoginPage");
+Route::post("/login", [LoginController::class, "AuthUser"])->name("AuthUser");
 
 
 require __DIR__.'/settings.php';

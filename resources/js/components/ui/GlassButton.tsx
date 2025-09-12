@@ -2,12 +2,15 @@
 interface GlassButtonInterfave{
   children: React.ReactNode
   width?: string;
+  type?: "button" | "submit" | "reset";
 }
 
-const GlassButton: React.FC<GlassButtonInterfave> = ({ children, width}) => {
+const GlassButton: React.FC<GlassButtonInterfave> = ({ children, width, type = 'button'}) => {
   return (
-    <button className={`
-        w-[${width}]
+    <button
+      style={{ width: width || 'auto' }}
+        type={type} 
+      className={`
         isolate group relative 
         px-5 py-2
         font-bold text-white text-lg 
