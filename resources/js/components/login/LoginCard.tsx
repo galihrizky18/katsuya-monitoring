@@ -16,8 +16,12 @@ const LoginCard = () => {
     return (
         <div className="flex flex-col gap-3 rounded-lg border border-gray-300 bg-white px-10 py-7 font-poppins drop-shadow-lg">
             {/* Logo */}
-            <div className="flex h-10 items-center justify-center">
-                <h1>Logo</h1>
+            <div className="flex h-36 items-center justify-center overflow-hidden">
+                <img
+                    src="http://101.128.76.179:4071/storage/images/Logo_Katsuya_Ganurashi.png"
+                    alt="Logo Katsuya"
+                    className="max-h-full max-w-full object-contain"
+                />
             </div>
 
             {/* Hedaer */}
