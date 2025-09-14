@@ -20,9 +20,7 @@ const SideBarPC = () => {
         </div>
 
    <ScrollArea  style={{ height: '80vh' }}  className='font-roboto flex flex-col gap-1'>
-        <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
-        <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
-        <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
+        <SidebarMenu Icon={LayoutDashboard} href='/dashboard'>Dashboard</SidebarMenu>
         <GroupCollapse title='Testing' Icon={LayoutDashboard} ><h1>Testing Collapse</h1></GroupCollapse>
    </ScrollArea>
     </div>

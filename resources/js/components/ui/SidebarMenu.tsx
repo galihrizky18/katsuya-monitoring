@@ -1,20 +1,22 @@
-import React from 'react'
-
+import { Link } from '@inertiajs/react';
+import React from 'react';
 
 interface SidebarMenuProps {
-    'children'?: React.ReactNode;
-    Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  children?: React.ReactNode;
+  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  href: string;
 }
 
-const SidebarMenu:React.FC<SidebarMenuProps> = ({children, Icon}) => {
+const SidebarMenu: React.FC<SidebarMenuProps> = ({ children, Icon, href }) => {
   return (
-    <div className='cursor-pointer hover:bg-hover w-full flex flex-row justify-between items-center p-2 hover:rounded-md overflow-hidden'>
-         <div className='flex flex-row gap-3'>
-                  {Icon && <Icon className="w-6 h-6 text-gray-700" />}
-                <h1 className='font-semibold text-[1rem]'>{children}</h1>
-            </div>
-    </div>
-  )
-}
+    <Link
+      href={href}
+      className="flex items-center gap-3 w-full p-2 rounded-md hover:bg-hover transition-colors duration-200"
+    >
+      {Icon && <Icon className="w-6 h-6 text-gray-700" />}
+      <span className="font-semibold text-[1rem]">{children}</span>
+    </Link>
+  );
+};
 
-export default SidebarMenu
+export default SidebarMenu;
