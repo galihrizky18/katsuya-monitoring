@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,9 +21,9 @@ Route::get("/", [LoginController::class, "show"])->name("login");
 Route::post("/login", [LoginController::class, "AuthUser"])->name("AuthUser");
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+    Route::get("/dashboard", [DashboardController::class, "show"])->name('dashboard');
+
+    Route::post("/logout", [LoginController::class,"logout"])->name("logout");
 });
 
 

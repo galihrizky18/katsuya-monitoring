@@ -1,18 +1,83 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useForm } from '@inertiajs/react';
+
+
 import { PasswordInput, TextInput } from '@mantine/core';
 import GlassButton from '../ui/GlassButton';
+import { useState } from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const LoginCard = () => {
-    const { data, setData, post, processing, errors } = useForm({
-        username: '',
-        password: '',
-    });
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    // const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log('Login');
+        try {
+            const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content;
+
+            const response = await axios.post(
+                '/login',
+                {
+                    username,
+                    password,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken || '',
+                    },
+                }
+            );
+
+            const result = response.data; // axios otomatis parsing JSON
+
+            if (result.status) {
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: result.message,
+                    timer: 1500,
+                    showConfirmButton: false,
+                });
+
+                // Redirect ke dashboard
+                window.location.href = '/dashboard';
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: result.message,
+                });
+            }
+        } catch (error: unknown) {
+            if (
+                typeof error === 'object' &&
+                error !== null &&
+                'response' in error &&
+                typeof (error as any).response === 'object' &&
+                (error as any).response.data
+            ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: (error as any).response.data.message || 'Terjadi kesalahan',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Tidak bisa menghubungi server.',
+                });
+            }
+        } finally {
+            // setLoading(false);
+        }
     };
+
 
     return (
         <div className="flex flex-col gap-3 rounded-lg border border-gray-300 bg-white px-10 py-7 font-poppins drop-shadow-lg">
@@ -32,9 +97,15 @@ const LoginCard = () => {
             </div>
 
             <form action="" className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                <TextInput label="Username" placeholder="username" />
+                <TextInput label="Username" placeholder="username"
+                   value={username}
+                    onChange={(e) => setUsername(e.currentTarget.value)}
+                />
 
-                <PasswordInput label="Password" placeholder="password" />
+                <PasswordInput label="Password" placeholder="password"
+                     value={password}
+                    onChange={(e) => setPassword(e.currentTarget.value)}
+                />
 
                 <div className="mt-3 flex w-full items-center justify-center">
                     <GlassButton width="50%" type="submit">
@@ -47,3 +118,4 @@ const LoginCard = () => {
 };
 
 export default LoginCard;
+
