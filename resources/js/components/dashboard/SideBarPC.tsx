@@ -1,12 +1,12 @@
 import React from 'react'
 import GroupCollapse from '../ui/collapse/GroupCollapse'
-
+import { ScrollArea } from '@mantine/core';
 import { LayoutDashboard } from 'lucide-react';
 import SidebarMenu from '../ui/SidebarMenu';
 
 const SideBarPC = () => {
   return (
-    <div className='w-[20%] flex flex-col gap-2 border border-black px-3 py-5'>
+    <div className='w-[20%] flex flex-col gap-2 border border-black px-3 py-5 box-border overflow-x-hidden'>
 
         {/* Logo */}
         <div className='overflow-hidden h-20  flex flex-row items-center '>
@@ -19,10 +19,12 @@ const SideBarPC = () => {
             <h1 className='text-xl text-gray-800 font-bold font-sawarabi-mincho'>Katsuya Ganurashi</h1>
         </div>
 
-        <div className='font-roboto flex flex-col gap-1 border border-black'>
-            <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
-            <GroupCollapse title='Testing' Icon={LayoutDashboard} ><h1>Testing Collapse</h1></GroupCollapse>
-        </div>
+   <ScrollArea  style={{ height: '80vh' }}  className='font-roboto flex flex-col gap-1'>
+        <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
+        <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
+        <SidebarMenu Icon={LayoutDashboard}>Dashboard</SidebarMenu>
+        <GroupCollapse title='Testing' Icon={LayoutDashboard} ><h1>Testing Collapse</h1></GroupCollapse>
+   </ScrollArea>
     </div>
   )
 }
