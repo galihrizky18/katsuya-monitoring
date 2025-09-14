@@ -8,8 +8,9 @@ const dashboard = () => {
 
     return (
         <DashboardLayout>
-            <h1>Dashboard</h1>
-
+            <div className="py-3 px-2">
+                <h1>Dashboard</h1>
+            </div>
         </DashboardLayout>
     );
 };

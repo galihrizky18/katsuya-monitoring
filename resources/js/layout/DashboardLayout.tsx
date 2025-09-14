@@ -17,7 +17,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({children}) => {
     }, []);
 
   return (
-    <div className='w-full h-screen flex flex-row  border border-black'>
+    <div className='w-full h-screen flex flex-row  '>
         {/* Sidebar PC */}
         {!isMobile && (
             <SideBarPC />
@@ -27,7 +27,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({children}) => {
             <div className='w-64 border border-black'>Sidebar Mobile</div>
         )}
 
-        <div className='w-full h-screen'>
+        <div className='w-full h-screen mx-3 bg-white'>
             {children}
         </div>
     </div>
