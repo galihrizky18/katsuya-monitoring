@@ -15,8 +15,15 @@ use Inertia\Inertia;
 // });
 
 
-Route::get("/", [LoginController::class, "show"])->name("LoginPage");
+Route::get("/", [LoginController::class, "show"])->name("login");
+
 Route::post("/login", [LoginController::class, "AuthUser"])->name("AuthUser");
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function () {
+        return Inertia::render('dashboard');
+    })->name('dashboard');
+});
 
 
 require __DIR__.'/settings.php';

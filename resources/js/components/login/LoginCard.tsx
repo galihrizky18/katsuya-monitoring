@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from '@inertiajs/react';
 import { PasswordInput, TextInput } from '@mantine/core';
 import GlassButton from '../ui/GlassButton';
@@ -27,7 +28,7 @@ const LoginCard = () => {
             {/* Hedaer */}
             <div className="flex flex-col">
                 <h1 className="text-3xl font-bold text-text-default">Selamat Datang Kembali,</h1>
-                <h2 className="text-md">Di Website Katsuya Monitoring</h2>
+                <h2 className="text-sm text-gray-500">Di Website Katsuya Monitoring</h2>
             </div>
 
             <form action="" className="flex flex-col gap-2" onSubmit={handleSubmit}>
