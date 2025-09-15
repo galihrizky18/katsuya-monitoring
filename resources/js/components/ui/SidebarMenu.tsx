@@ -14,7 +14,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ children, Icon, href }) => {
       className="flex items-center gap-3 w-full p-2 rounded-md hover:bg-hover transition-colors duration-200"
     >
       {Icon && <Icon className="w-6 h-6 text-gray-700" />}
-      <span className="font-semibold text-[1rem]">{children}</span>
+      <span className="font-semibold text-[.95rem]">{children}</span>
     </Link>
   );
 };

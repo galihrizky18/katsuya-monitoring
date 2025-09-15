@@ -3,13 +3,15 @@ interface GlassButtonInterfave{
   children: React.ReactNode
   width?: string;
   type?: "button" | "submit" | "reset";
+  disable?:boolean
 }
 
-const GlassButton: React.FC<GlassButtonInterfave> = ({ children, width, type = 'button'}) => {
+const GlassButton: React.FC<GlassButtonInterfave> = ({ children, width, type = 'button', disable = false}) => {
   return (
     <button
       style={{ width: width || 'auto' }}
-        type={type} 
+      type={type} 
+      disabled={disable}
       className={`
         isolate group relative 
         px-5 py-2
@@ -32,7 +34,7 @@ const GlassButton: React.FC<GlassButtonInterfave> = ({ children, width, type = '
       
       {/* Konten Teks Tombol */}
       <span className="relative z-10">
-                  {children}
+        {children}
       </span>
     </button>
   )
