@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KeuntunganModel;
+use App\Models\ModalController;
 use App\Models\PembelianModel;
 use App\Models\PenjualanModel;
 use Illuminate\Http\Request;
@@ -16,6 +18,9 @@ class DashboardController extends Controller
 
         $allSeller = PenjualanModel::get_all_seller();
         $allPembelian = PembelianModel::get_all_pembelian();
+        $currentModal = ModalController::Get_Current_Modal();
+        $currentUntung = KeuntunganModel::Get_Current_Untung();
+
 
         return Inertia::render("dashboard/dashboard", [
             'user' => [
@@ -30,6 +35,12 @@ class DashboardController extends Controller
                 ],
                 'pembelian'=>[
                     'Total_Pembelian' => $allPembelian[0]->Total_Harga
+                ],
+                'modal'=>[
+                    'Total_Modal'=>$currentModal
+                ],
+                'untung'=>[
+                    'Tot_Untung' => $currentUntung
                 ]
             ]
         ]);

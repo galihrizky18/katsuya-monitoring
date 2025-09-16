@@ -2,6 +2,8 @@ import ChartSection from '@/components/dashboard/ChartSection';
 import StaticSection from '@/components/dashboard/StaticSection';
 import { getCurrentDateTime } from '@/helper/getCurrentDateTime';
 import DashboardLayout from '@/layout/DashboardLayout';
+import useKeuntungan from '@/utility/zustand/keuntunganDatas';
+import useModal from '@/utility/zustand/modalDatas';
 import usePembelianDatas from '@/utility/zustand/pembelianDatas';
 import usePenjualanStore from '@/utility/zustand/penjualanDatas';
 import React, { useEffect, useState } from 'react';
@@ -16,6 +18,14 @@ interface Pembelian {
     Total_Pembelian: number;
 }
 
+interface Modal {
+    Total_Modal: number;
+}
+
+interface Untung {
+    Tot_Untung: number;
+}
+
 interface DashboardProps {
     user: {
         nama: string;
@@ -24,6 +34,8 @@ interface DashboardProps {
     data: {
         penjualan: Penjualan;
         pembelian: Pembelian;
+        modal: Modal;
+        untung: Untung;
     };
 }
 
@@ -32,6 +44,8 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
 
     const { setQty, setUnit, setPrice } = usePenjualanStore();
     const { setTotalPembelian } = usePembelianDatas();
+    const { setTot_Modal } = useModal();
+    const { setTot_Keuntungan } = useKeuntungan();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -51,6 +65,8 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
         setUnit(data.penjualan.satuan);
 
         setTotalPembelian(data.pembelian.Total_Pembelian);
+        setTot_Modal(data.modal.Total_Modal);
+        setTot_Keuntungan(data.untung.Tot_Untung);
     }, []);
 
     return (

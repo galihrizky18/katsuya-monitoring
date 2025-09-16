@@ -1,18 +1,26 @@
+import useKeuntungan from '@/utility/zustand/keuntunganDatas';
+import useModal from '@/utility/zustand/modalDatas';
 import usePembelianDatas from '@/utility/zustand/pembelianDatas';
 import usePenjualanStore from '@/utility/zustand/penjualanDatas';
 import StaticCard from './ui/StaticCard';
 
 const StaticSection = () => {
     const SellIcon = `${import.meta.env.VITE_URL_ICONS}/icon-shopping-bags.png`;
+    const PurchaseIcon = `${import.meta.env.VITE_URL_ICONS}/icon-belanja.png`;
+    const CapitaleIcon = `${import.meta.env.VITE_URL_ICONS}/icon-modal.png`;
+    const ProfitIcon = `${import.meta.env.VITE_URL_ICONS}/icon-profit.png`;
 
     const { qty, unit, price } = usePenjualanStore();
     const { Total_Pembelian } = usePembelianDatas();
+    const { Tot_Modal } = useModal();
+    const { Tot_Keuntungan } = useKeuntungan();
 
     return (
         <div className="grid grid-cols-6 gap-4 px-5">
             <StaticCard ImgUrl={SellIcon} title="Penjualan" value={qty} unit={unit} price={price} />
-            <StaticCard ImgUrl={SellIcon} title="Pembelian" price={Total_Pembelian} />
-            {/* <StaticCard ImgUrl={SellIcon} title="Penjualan" value="2" unit="Pcs" price="25000" /> */}
+            <StaticCard ImgUrl={PurchaseIcon} title="Pembelian" price={Total_Pembelian} />
+            <StaticCard ImgUrl={CapitaleIcon} title="Modal" price={Tot_Modal} />
+            <StaticCard ImgUrl={ProfitIcon} title="Keuntungan" price={Tot_Keuntungan} />
         </div>
     );
 };

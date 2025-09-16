@@ -17,13 +17,16 @@ const SideBarPC = () => {
                 <h1 className="font-sawarabi-mincho text-xl font-bold text-gray-800">Katsuya Ganurashi</h1>
             </div>
 
-            <ScrollArea style={{ height: '80vh' }} className="flex flex-col gap-1 font-sawarabi-mincho">
-                <SidebarMenu Icon={LayoutDashboard} href="/dashboard">
-                    Dashboard
-                </SidebarMenu>
-                <GroupCollapse title="Testing" Icon={LayoutDashboard}>
-                    <h1>Testing Collapse</h1>
-                </GroupCollapse>
+            <ScrollArea style={{ height: '80vh' }}>
+                <div className="flex flex-col gap-1 font-sawarabi-mincho">
+                    <SidebarMenu Icon={LayoutDashboard} href="/dashboard">
+                        Dashboard
+                    </SidebarMenu>
+
+                    <GroupCollapse title="Testing" Icon={LayoutDashboard}>
+                        <h1>Testing Collapse</h1>
+                    </GroupCollapse>
+                </div>
             </ScrollArea>
         </div>
     );
