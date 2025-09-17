@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\KeuntunganModel;
-use App\Models\ModalController;
+use App\Models\ModalModel;
 use App\Models\PembelianModel;
 use App\Models\PenjualanModel;
-use Illuminate\Http\Request;
+use App\Services\ChartServices;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
+
+    protected $chartService;
+
+    public function __construct(ChartServices $chartService)
+    {
+        $this->chartService = $chartService;
+    }
+
     public function show(){
 
         $user = Auth::user();
 
         $allSeller = PenjualanModel::get_all_seller();
         $allPembelian = PembelianModel::get_all_pembelian();
-        $currentModal = ModalController::Get_Current_Modal();
+        $currentModal = ModalModel::Get_Current_Modal();
         $currentUntung = KeuntunganModel::Get_Current_Untung();
 
 
