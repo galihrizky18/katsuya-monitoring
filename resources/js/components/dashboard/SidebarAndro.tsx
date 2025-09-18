@@ -2,7 +2,6 @@ import { Drawer, ScrollArea } from '@mantine/core';
 import { LayoutDashboard } from 'lucide-react';
 import React from 'react';
 import SidebarMenu from '../ui/SidebarMenu';
-import GroupCollapse from '../ui/collapse/GroupCollapse';
 
 interface SidebarAndroProps {
     opened: boolean;
@@ -35,9 +34,9 @@ const SidebarAndro: React.FC<SidebarAndroProps> = ({ opened, close }) => {
                     <SidebarMenu Icon={LayoutDashboard} href="/dashboard">
                         Dashboard
                     </SidebarMenu>
-                    <GroupCollapse title="Testing" Icon={LayoutDashboard}>
+                    {/* <GroupCollapse title="Testing" Icon={LayoutDashboard}>
                         <h1>Testing Collapse</h1>
-                    </GroupCollapse>
+                    </GroupCollapse> */}
                 </div>
             </ScrollArea>
         </Drawer>

@@ -1,6 +1,5 @@
 import { ScrollArea } from '@mantine/core';
 import { LayoutDashboard } from 'lucide-react';
-import GroupCollapse from '../ui/collapse/GroupCollapse';
 import SidebarMenu from '../ui/SidebarMenu';
 
 const SideBarPC = () => {
@@ -23,9 +22,9 @@ const SideBarPC = () => {
                         Dashboard
                     </SidebarMenu>
 
-                    <GroupCollapse title="Testing" Icon={LayoutDashboard}>
+                    {/* <GroupCollapse title="Testing" Icon={LayoutDashboard}>
                         <h1>Testing Collapse</h1>
-                    </GroupCollapse>
+                    </GroupCollapse> */}
                 </div>
             </ScrollArea>
         </div>

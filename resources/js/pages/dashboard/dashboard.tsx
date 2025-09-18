@@ -86,7 +86,7 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
         <DashboardLayout>
             <div className="flex h-full w-full flex-col gap-4">
                 {/* Header */}
-                <div className="grid grid-cols-3 font-sawarabi-mincho">
+                <div className="grid grid-cols-1 font-sawarabi-mincho">
                     <div className="boder col-span-2 grid grid-cols-3 rounded-xl bg-white px-5 py-5 drop-shadow-md">
                         {/* Grid 1 */}
                         <div className="col-span-2 flex flex-col gap-1">
