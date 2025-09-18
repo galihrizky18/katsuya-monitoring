@@ -5,7 +5,7 @@ import SidebarMenu from '../ui/SidebarMenu';
 
 const SideBarPC = () => {
     return (
-        <div className="box-border flex w-[20%] flex-col gap-2 overflow-x-hidden bg-white px-3 py-5 drop-shadow-lg">
+        <div className="box-border flex h-full flex-col gap-2 overflow-x-hidden bg-white px-3 py-5 drop-shadow-lg">
             {/* Logo */}
             <div className="flex h-20 flex-row items-center overflow-hidden">
                 <img

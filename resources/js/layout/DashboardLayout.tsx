@@ -20,27 +20,36 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     }, []);
 
     return (
-        <div className="flex h-screen w-full flex-row bg-blue-50">
+        <div className="flex w-full flex-row bg-blue-50">
             {/* Sidebar PC */}
             {!isMobile && (
                 <>
-                    <SideBarPC />
-                    <div className="mx-3 h-screen w-full bg-transparent px-1 py-5">{children}</div>
+                    {/* Sidebar sticky */}
+                    <div className="sticky top-0 h-screen">
+                        <SideBarPC />
+                    </div>
+
+                    {/* Konten utama */}
+                    <div className="mx-3 w-full overflow-y-auto bg-transparent px-1 py-5">{children}</div>
                 </>
             )}
 
             {isMobile && (
-                <div className="flex flex-col">
-                    {/* Tombol Open/Close */}
+                <div className="flex w-full flex-col">
+                    {/* Tombol Open/Close Sidebar */}
                     <div className="px-2 py-1">
-                        <div className="inline-flex items-center justify-center rounded-md bg-white p-1 shadow" onClick={opened ? close : open}>
+                        <div
+                            className="inline-flex cursor-pointer items-center justify-center rounded-md bg-white p-1 shadow"
+                            onClick={opened ? close : open}
+                        >
                             <Menu className="h-6 w-6" />
                         </div>
                     </div>
 
-                    {/* Konten Utama */}
-                    <div className="mx-3 h-screen w-full bg-transparent px-1 py-1">{children}</div>
+                    {/* Konten utama di mobile */}
+                    <div className="mx-3 w-full overflow-y-auto bg-transparent px-1 py-1">{children}</div>
 
+                    {/* Sidebar Mobile Drawer */}
                     <SidebarAndro opened={opened} close={close} />
                 </div>
             )}

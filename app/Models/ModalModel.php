@@ -75,7 +75,7 @@ class ModalModel extends Model
         $sql .= "FROM TRX_Adjustment_Modal a ";
         $sql .= "WHERE a.Status IS NULL ";
         $sql .= "GROUP BY DATE_FORMAT(a.Tanggal, '%Y-%m') ";
-        $sql .= ") SELECT 'Modal' AS jenis, DATE_FORMAT(a.Tanggal, '%Y-%m') AS Periode, ";
+        $sql .= ") SELECT 'Modal' AS jenis, DATE_FORMAT(a.Tanggal, '%Y-%m') AS Periode, MONTH(a.Tanggal) as Bulan, ";
         $sql .= "CASE MONTH(a.Tanggal) ";
         $sql .= "WHEN 1 THEN 'Januari' WHEN 2 THEN 'Februari' WHEN 3 THEN 'Maret' WHEN 4 THEN 'April' WHEN 5 THEN 'Mei' WHEN 6 THEN 'Juni' ";
         $sql .= "WHEN 7 THEN 'Juli' WHEN 8 THEN 'Agustus' WHEN 9 THEN 'September' WHEN 10 THEN 'Oktober' WHEN 11 THEN 'November' WHEN 12 THEN 'Desember' ";
@@ -92,7 +92,7 @@ class ModalModel extends Model
         $sql .= "LEFT JOIN pengeluaran e ON DATE_FORMAT(a.Tanggal, '%Y-%m') = e.Periode ";
         $sql .= "LEFT JOIN adjustment f ON DATE_FORMAT(a.Tanggal, '%Y-%m') = f.Periode ";
         $sql .= "WHERE a.Status IS NULL ";
-        $sql .= "GROUP BY DATE_FORMAT(a.Tanggal, '%Y-%m'), MONTH(a.Tanggal), YEAR(a.Tanggal), d.Tot_Belanja, e.Total_Pengeluaran_Modal, f.Jumlah_Adjust_Modal, Nama_Bulan ";
+        $sql .= "GROUP BY DATE_FORMAT(a.Tanggal, '%Y-%m'), MONTH(a.Tanggal), YEAR(a.Tanggal), d.Tot_Belanja, e.Total_Pengeluaran_Modal, f.Jumlah_Adjust_Modal, Nama_Bulan, Bulan ";
         $sql .= "ORDER BY YEAR(a.Tanggal), MONTH(a.Tanggal);";
 
         return DB::select($sql, []);

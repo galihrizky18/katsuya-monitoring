@@ -53,7 +53,7 @@ class KeuntunganModel extends Model
         $sql .= "FROM TRX_Adjustment_Untung a ";
         $sql .= "WHERE a.status IS NULL ";
         $sql .= "GROUP BY DATE_FORMAT(a.tanggal, '%Y-%m') ";
-        $sql .= ") SELECT 'Keuntungan' AS jenis, ";
+        $sql .= ") SELECT 'Keuntungan' AS jenis, MONTH(a.Tanggal) as Bulan, ";
         $sql .= "CONCAT( CASE MONTH(a.Tanggal) ";
         $sql .= "WHEN 1 THEN 'Januari' WHEN 2 THEN 'Februari' WHEN 3 THEN 'Maret' WHEN 4 THEN 'April' WHEN 5 THEN 'Mei' WHEN 6 THEN 'Juni' ";
         $sql .= "WHEN 7 THEN 'Juli' WHEN 8 THEN 'Agustus' WHEN 9 THEN 'September' WHEN 10 THEN 'Oktober' WHEN 11 THEN 'November' WHEN 12 THEN 'Desember' ";
@@ -66,7 +66,7 @@ class KeuntunganModel extends Model
         $sql .= "LEFT JOIN pengeluaran AS p ON DATE_FORMAT(a.Tanggal, '%Y-%m') = p.Periode ";
         $sql .= "LEFT JOIN adjustment AS ad ON DATE_FORMAT(a.Tanggal, '%Y-%m') = ad.Periode ";
         $sql .= "WHERE a.Status IS NULL ";
-        $sql .= "GROUP BY DATE_FORMAT(a.Tanggal, '%Y-%m'), p.Total_Pengeluaran_Untung, ad.Jumlah_Adjust_Untung, Nama_Bulan ";
+        $sql .= "GROUP BY DATE_FORMAT(a.Tanggal, '%Y-%m'), p.Total_Pengeluaran_Untung, ad.Jumlah_Adjust_Untung, Nama_Bulan, Bulan ";
         $sql .= "ORDER BY YEAR(a.Tanggal), MONTH(a.Tanggal); ";
         
         return DB::select($sql, []);

@@ -20,7 +20,7 @@ class PenjualanModel extends Model
     public static function get_all_penjualan_chart(){
         
         // Data Penjualan
-        $sql = "SELECT 'Penjualan' AS jenis, ";
+        $sql = "SELECT 'Penjualan' AS jenis, MONTH(a.Tanggal) as Bulan, YEAR(a.Tanggal) as Tahun, ";
         $sql .= "CONCAT(CASE MONTH(a.Tanggal) ";
         $sql .= "WHEN 1 THEN 'Januari' ";
         $sql .= "WHEN 2 THEN 'Februari' ";
@@ -41,7 +41,7 @@ class PenjualanModel extends Model
         $sql .= "INNER JOIN trx_penjualan_harian_detail AS b ON a.No_Transaksi = b.No_Transaksi ";
         $sql .= "WHERE ";
         $sql .= "a.Status IS NULL ";
-        $sql .= "GROUP BY YEAR(a.Tanggal), MONTH(a.Tanggal), Nama_Bulan ";
+        $sql .= "GROUP BY YEAR(a.Tanggal), MONTH(a.Tanggal), Nama_Bulan, Bulan, Tahun ";
         $sql .= "ORDER BY YEAR(a.Tanggal), MONTH(a.Tanggal); ";
         return DB::select($sql, []);
 

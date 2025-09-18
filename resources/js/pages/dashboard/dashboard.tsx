@@ -2,6 +2,7 @@ import ChartSection from '@/components/dashboard/ChartSection';
 import StaticSection from '@/components/dashboard/StaticSection';
 import { getCurrentDateTime } from '@/helper/getCurrentDateTime';
 import DashboardLayout from '@/layout/DashboardLayout';
+import { useChartDatas, useChartPenjualanByProduk } from '@/utility/zustand/chartDatas';
 import useKeuntungan from '@/utility/zustand/keuntunganDatas';
 import useModal from '@/utility/zustand/modalDatas';
 import usePembelianDatas from '@/utility/zustand/pembelianDatas';
@@ -36,6 +37,8 @@ interface DashboardProps {
         pembelian: Pembelian;
         modal: Modal;
         untung: Untung;
+        charts: any;
+        penjualan_by_product: any;
     };
 }
 
@@ -46,6 +49,8 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
     const { setTotalPembelian } = usePembelianDatas();
     const { setTot_Modal } = useModal();
     const { setTot_Keuntungan } = useKeuntungan();
+    const { setPenjualan, setModal, setKeuntungan, setTahun } = useChartDatas();
+    const { setProduk } = useChartPenjualanByProduk();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -67,6 +72,14 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
         setTotalPembelian(data.pembelian.Total_Pembelian);
         setTot_Modal(data.modal.Total_Modal);
         setTot_Keuntungan(data.untung.Tot_Untung);
+
+        setPenjualan(data.charts.penjualan);
+        setModal(data.charts.modal);
+        setKeuntungan(data.charts.keuntungan);
+        setTahun(data.charts.tahun);
+
+        setProduk(data.penjualan_by_product.data);
+        // console.log(data.penjualan_by_product.data);
     }, []);
 
     return (

@@ -29,6 +29,9 @@ class DashboardController extends Controller
         $currentModal = ModalModel::Get_Current_Modal();
         $currentUntung = KeuntunganModel::Get_Current_Untung();
 
+        $data_chart = $this->chartService->Get_Main_Chart();
+        
+        $data_penjualan_by_product = $this->chartService->Get_Data_Penjualan_Produk();
 
         return Inertia::render("dashboard/dashboard", [
             'user' => [
@@ -49,6 +52,10 @@ class DashboardController extends Controller
                 ],
                 'untung'=>[
                     'Tot_Untung' => $currentUntung
+                ],
+                "charts"=> $data_chart,
+                "penjualan_by_product"=>[
+                    "data"=>$data_penjualan_by_product
                 ]
             ]
         ]);
