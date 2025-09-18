@@ -1,5 +1,6 @@
 import SidebarAndro from '@/components/dashboard/SidebarAndro';
 import SideBarPC from '@/components/dashboard/SideBarPC';
+import Footer from '@/components/Footer';
 import { useDisclosure } from '@mantine/hooks';
 import { Menu } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
@@ -30,7 +31,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                     </div>
 
                     {/* Konten utama */}
-                    <div className="mx-3 w-full overflow-y-auto bg-transparent px-1 py-5">{children}</div>
+                    <div className="mx-3 flex w-full flex-col gap-3 overflow-y-auto bg-transparent py-5 pr-3 pl-1">{children}</div>
+
+                    {/* Footer */}
+                    <div>
+                        <Footer />
+                    </div>
                 </>
             )}
 
@@ -47,7 +53,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                     </div>
 
                     {/* Konten utama di mobile */}
-                    <div className="mx-3 w-full overflow-y-auto bg-transparent px-1 py-1">{children}</div>
+                    <div className="mx-3 flex w-full flex-col overflow-y-auto bg-transparent py-1 pr-3 pl-1">{children}</div>
+
+                    {/* Footer */}
+                    <div>
+                        <Footer />
+                    </div>
 
                     {/* Sidebar Mobile Drawer */}
                     <SidebarAndro opened={opened} close={close} />
