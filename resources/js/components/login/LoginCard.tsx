@@ -12,6 +12,8 @@ const LoginCard = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const Logo = import.meta.env.VITE_APP_URL_LOGO;
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -83,11 +85,7 @@ const LoginCard = () => {
         <div className="mx-3 flex flex-col gap-3 rounded-xl border border-gray-300 bg-white px-5 py-5 font-poppins drop-shadow-lg md:mx-0 md:px-10 md:py-7">
             {/* Logo */}
             <div className="flex h-28 items-center justify-center overflow-hidden md:h-36">
-                <img
-                    src="http://101.128.76.179:4071/storage/images/Logo_Katsuya_Ganurashi.png"
-                    alt="Logo Katsuya"
-                    className="max-h-full max-w-full object-contain"
-                />
+                <img src={Logo} alt="Logo Katsuya" className="max-h-full max-w-full object-contain" />
             </div>
 
             {/* Hedaer */}

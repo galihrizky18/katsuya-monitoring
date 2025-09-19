@@ -101,12 +101,10 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
                         </div>
                     </div>
                 </div>
-
                 {/* Kumpulan Card */}
                 <StaticSection />
-
                 {/* Chart Secion */}
-                <ChartSection />
+                <ChartSection />{' '}
             </div>
         </DashboardLayout>
     );

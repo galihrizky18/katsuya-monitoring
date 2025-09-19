@@ -1,4 +1,4 @@
-import RiwayatTransaksi from './RiwayatTransaksi';
+import ProdukSection from './ProdukSection';
 import MainChart from './ui/Chart/MainChart';
 import PenjualanProductChart from './ui/Chart/PenjualanProductChart';
 
@@ -14,7 +14,7 @@ const ChartSection = () => {
                     <PenjualanProductChart />
                 </div>
                 <div className="rounded-lg bg-white px-5 py-2 drop-shadow-lg">
-                    <RiwayatTransaksi />
+                    <ProdukSection />
                 </div>
             </div>
         </div>

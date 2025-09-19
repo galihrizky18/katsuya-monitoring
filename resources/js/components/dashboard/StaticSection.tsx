@@ -5,10 +5,10 @@ import usePenjualanStore from '@/utility/zustand/penjualanDatas';
 import StaticCard from './ui/StaticCard';
 
 const StaticSection = () => {
-    const SellIcon = `${import.meta.env.VITE_URL_ICONS}/icon-shopping-bags.png`;
-    const PurchaseIcon = `${import.meta.env.VITE_URL_ICONS}/icon-belanja.png`;
-    const CapitaleIcon = `${import.meta.env.VITE_URL_ICONS}/icon-modal.png`;
-    const ProfitIcon = `${import.meta.env.VITE_URL_ICONS}/icon-profit.png`;
+    const SellIcon = `${import.meta.env.VITE_APP_URL_ICONS}/icon-shopping-bags.png`;
+    const PurchaseIcon = `${import.meta.env.VITE_APP_URL_ICONS}/icon-belanja.png`;
+    const CapitaleIcon = `${import.meta.env.VITE_APP_URL_ICONS}/icon-modal.png`;
+    const ProfitIcon = `${import.meta.env.VITE_APP_URL_ICONS}/icon-profit.png`;
 
     const { qty, unit, price } = usePenjualanStore();
     const { Total_Pembelian } = usePembelianDatas();

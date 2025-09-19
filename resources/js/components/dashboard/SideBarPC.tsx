@@ -3,15 +3,13 @@ import { LayoutDashboard } from 'lucide-react';
 import SidebarMenu from '../ui/SidebarMenu';
 
 const SideBarPC = () => {
+    const Logo = import.meta.env.VITE_APP_URL_LOGO;
+
     return (
         <div className="box-border flex h-full flex-col gap-2 overflow-x-hidden bg-white px-3 py-5 drop-shadow-lg">
             {/* Logo */}
             <div className="flex h-20 flex-row items-center overflow-hidden">
-                <img
-                    src="http://101.128.76.179:4071/storage/images/Logo_Katsuya_Ganurashi.png"
-                    alt="Logo Katsuya"
-                    className="max-h-full max-w-full object-contain"
-                />
+                <img src={Logo} alt="Logo Katsuya" className="max-h-full max-w-full object-contain" />
 
                 <h1 className="font-sawarabi-mincho text-xl font-bold text-gray-800">Katsuya Ganurashi</h1>
             </div>
