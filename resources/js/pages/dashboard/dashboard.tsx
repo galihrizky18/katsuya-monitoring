@@ -87,7 +87,7 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
             <div className="flex h-full w-full flex-col gap-4">
                 {/* Header */}
                 <div className="grid grid-cols-1 font-sawarabi-mincho">
-                    <div className="boder col-span-2 grid grid-cols-3 rounded-xl bg-white px-5 py-5 drop-shadow-md">
+                    <div className="boder col-span-2 hidden grid-cols-3 rounded-xl bg-white px-5 py-5 drop-shadow-md md:grid">
                         {/* Grid 1 */}
                         <div className="col-span-2 flex flex-col gap-1">
                             <h1 className="text-3xl font-semibold">Selamat Datang Kembali, </h1>
@@ -98,6 +98,14 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
                         <div className="flex flex-col items-end justify-center gap-1 text-end text-gray-500">
                             <h1 className="text-md font-semibold">{currentTime.dateFormat}</h1>
                             <h2 className="text-sm">{currentTime.timeFormat}</h2>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col rounded-xl bg-white px-3 py-2 text-sm drop-shadow-md md:hidden">
+                        <div className="flex flex-col gap-1">
+                            {' '}
+                            <h1 className="text-xl font-semibold">Selamat Datang Kembali, </h1>
+                            <h2 className="text-xs">{user.nama}</h2>
                         </div>
                     </div>
                 </div>

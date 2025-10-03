@@ -1,6 +1,7 @@
 import { Drawer, ScrollArea } from '@mantine/core';
 import { LayoutDashboard } from 'lucide-react';
 import React from 'react';
+import ButtonLogout from '../login/ButtonLogout';
 import SidebarMenu from '../ui/SidebarMenu';
 
 interface SidebarAndroProps {
@@ -27,7 +28,7 @@ const SidebarAndro: React.FC<SidebarAndroProps> = ({ opened, close }) => {
                 <h1 className="font-sawarabi-mincho text-xl font-bold text-gray-800">Katsuya Ganurashi</h1>
             </div>
 
-            <ScrollArea style={{ height: '80vh' }}>
+            <ScrollArea style={{ height: '75vh' }}>
                 <div className="flex flex-col gap-1 font-sawarabi-mincho">
                     <SidebarMenu Icon={LayoutDashboard} href="/dashboard">
                         Dashboard
@@ -37,6 +38,10 @@ const SidebarAndro: React.FC<SidebarAndroProps> = ({ opened, close }) => {
                     </GroupCollapse> */}
                 </div>
             </ScrollArea>
+
+            <div className="flex flex-col border-t border-gray-400 py-1 font-sawarabi-mincho">
+                <ButtonLogout />
+            </div>
         </Drawer>
     );
 };

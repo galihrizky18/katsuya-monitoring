@@ -52,7 +52,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 
                     {/* Konten utama di mobile */}
                     <div className="flex w-full flex-col gap-2 bg-transparent">
-                        <div className="mx-3 pt-5 pr-3 pb-2 pl-1">{children}</div>
+                        <div className="mx-1 pt-1 pr-3 pb-2 pl-1">{children}</div>
                         <Footer />
                     </div>
 
