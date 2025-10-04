@@ -14,21 +14,21 @@ const StaticCard: React.FC<StaticCardProps> = ({ ImgUrl, title, value = 'nothing
 
     return (
         <div className="flex flex-col rounded-lg bg-white px-3 py-3 font-sawarabi-mincho drop-shadow-md">
-            {ImgUrl && <img src={ImgUrl} alt={title} className="mb-3 h-12 w-12 object-contain" />}
-            <h1 className="text-sm text-gray-500">{title}</h1>
+            {ImgUrl && <img src={ImgUrl} alt={title} className="mb-3 h-10 w-10 object-contain md:h-12 md:w-12" />}
+            <h1 className="text-xs text-gray-500 md:text-sm">{title}</h1>
 
             {value === 'nothing' ? (
                 <h1></h1>
             ) : (
-                <h2 className="text-2xl font-semibold">
+                <h2 className="text-md font-semibold md:text-2xl">
                     {formattedValue} <span className="text-sm">{unit}</span>
                 </h2>
             )}
 
             {value === 'nothing' ? (
-                <h2 className="mt-1 text-xl font-semibold">Rp. {formattedPrice}</h2>
+                <h2 className="mt-1 text-lg font-semibold md:text-xl">Rp. {formattedPrice}</h2>
             ) : (
-                <h2 className="mt-1 text-sm text-gray-500">Rp. {formattedPrice}</h2>
+                <h2 className="mt-1 text-xs text-gray-500 md:text-sm">Rp. {formattedPrice}</h2>
             )}
         </div>
     );

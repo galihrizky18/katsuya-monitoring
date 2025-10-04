@@ -25,7 +25,7 @@ const SidebarAndro: React.FC<SidebarAndroProps> = ({ opened, close }) => {
             <div className="flex h-20 flex-row items-center overflow-hidden">
                 <img src={Logo} alt="Logo Katsuya" className="max-h-full max-w-full object-contain" />
 
-                <h1 className="font-sawarabi-mincho text-xl font-bold text-gray-800">Katsuya Ganurashi</h1>
+                <h1 className="text-md font-sawarabi-mincho font-bold text-gray-800">Katsuya Ganurashi</h1>
             </div>
 
             <ScrollArea style={{ height: '75vh' }}>

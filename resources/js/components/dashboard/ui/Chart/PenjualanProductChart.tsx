@@ -38,14 +38,13 @@ const PenjualanProductChart = (props: HighchartsReactProps) => {
             pie: {
                 allowPointSelect: true,
                 cursor: 'pointer',
+                size: '100%',
                 dataLabels: [
                     {
                         enabled: true,
                         distance: 20,
                     },
                     {
-                        enabled: true,
-                        distance: -40,
                         format: '{point.y} Pcs',
                         style: {
                             fontSize: '.9rem',
@@ -71,6 +70,58 @@ const PenjualanProductChart = (props: HighchartsReactProps) => {
                 data: data,
             },
         ],
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        title: {
+                            style: {
+                                fontSize: '14px',
+                            },
+                        },
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom',
+                        },
+                        plotOptions: {
+                            pie: {
+                                size: '100%', // <-- Koreksi di sini
+                                dataLabels: [
+                                    {
+                                        enabled: false,
+                                        distance: 10,
+                                        style: {
+                                            fontSize: '.7rem',
+                                        },
+                                    },
+                                    {
+                                        enabled: true,
+                                        distance: -30,
+                                        format: '{point.y} Pcs',
+                                        style: {
+                                            fontSize: '.7rem',
+                                            textOutline: 'none',
+                                            opacity: 0.7,
+                                            color: '#FFFFFF',
+                                            fontWeight: 'bold',
+                                        },
+                                        filter: {
+                                            operator: '>',
+                                            property: 'y',
+                                            value: 25,
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                },
+            ],
+        },
     };
 
     return (
