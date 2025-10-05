@@ -10,7 +10,15 @@ interface StaticCardProps {
 
 const StaticCard: React.FC<StaticCardProps> = ({ ImgUrl, title, value = 'nothing', unit, price }) => {
     const formattedPrice = new Intl.NumberFormat('id-ID').format(Number(price));
-    const formattedValue = new Intl.NumberFormat('id-ID').format(Number(value));
+    let formattedValue = '';
+    if (typeof value === 'string') {
+        const prefix = value.split(' ')[0];
+        const numericValue = Number(value.replace(/[^\d]/g, ''));
+        const formatedAngka = new Intl.NumberFormat('id-ID').format(Number(numericValue));
+        formattedValue = `${prefix} ${formatedAngka}`;
+    } else {
+        formattedValue = new Intl.NumberFormat('id-ID').format(Number(value));
+    }
 
     return (
         <div className="flex flex-col rounded-lg bg-white px-3 py-3 font-sawarabi-mincho drop-shadow-md">

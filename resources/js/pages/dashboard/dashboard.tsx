@@ -21,10 +21,12 @@ interface Pembelian {
 
 interface Modal {
     Total_Modal: number;
+    Omzet_Modal: number;
 }
 
 interface Untung {
     Tot_Untung: number;
+    Omzet_Untung: number;
 }
 
 interface DashboardProps {
@@ -47,8 +49,8 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
 
     const { setQty, setUnit, setPrice } = usePenjualanStore();
     const { setTotalPembelian } = usePembelianDatas();
-    const { setTot_Modal } = useModal();
-    const { setTot_Keuntungan } = useKeuntungan();
+    const { setTot_Modal, Set_Omzet_Modal } = useModal();
+    const { setTot_Keuntungan, Set_Omzet_Untung } = useKeuntungan();
     const { setPenjualan, setModal, setKeuntungan, setTahun } = useChartDatas();
     const { setProduk } = useChartPenjualanByProduk();
 
@@ -72,6 +74,9 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
         setTotalPembelian(data.pembelian.Total_Pembelian);
         setTot_Modal(data.modal.Total_Modal);
         setTot_Keuntungan(data.untung.Tot_Untung);
+
+        Set_Omzet_Modal(data.modal.Omzet_Modal);
+        Set_Omzet_Untung(data.untung.Omzet_Untung);
 
         setPenjualan(data.charts.penjualan);
         setModal(data.charts.modal);

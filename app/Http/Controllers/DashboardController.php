@@ -27,7 +27,9 @@ class DashboardController extends Controller
         $allSeller = PenjualanModel::get_all_seller();
         $allPembelian = PembelianModel::get_all_pembelian();
         $currentModal = ModalModel::Get_Current_Modal();
+        $omzet_modal = ModalModel::get_omzet_modal();
         $currentUntung = KeuntunganModel::Get_Current_Untung();
+        $omzet_Untung = KeuntunganModel::get_omzel_untung();
 
         $data_chart = $this->chartService->Get_Main_Chart();
         
@@ -48,10 +50,12 @@ class DashboardController extends Controller
                     'Total_Pembelian' => $allPembelian[0]->Total_Harga
                 ],
                 'modal'=>[
-                    'Total_Modal'=>$currentModal
+                    'Total_Modal'=>$currentModal,
+                    'Omzet_Modal' => $omzet_modal[0]->Total_Omzet_Modal
                 ],
                 'untung'=>[
-                    'Tot_Untung' => $currentUntung
+                    'Tot_Untung' => $currentUntung,
+                    'Omzet_Untung' => $omzet_Untung[0]->Total_Omzet_Keuntungan
                 ],
                 "charts"=> $data_chart,
                 "penjualan_by_product"=>[

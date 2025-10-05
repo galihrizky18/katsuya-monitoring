@@ -12,15 +12,15 @@ const StaticSection = () => {
 
     const { qty, unit, price } = usePenjualanStore();
     const { Total_Pembelian } = usePembelianDatas();
-    const { Tot_Modal } = useModal();
-    const { Tot_Keuntungan } = useKeuntungan();
+    const { Tot_Modal, Omzet_Modal } = useModal();
+    const { Tot_Keuntungan, Omzet_Untung } = useKeuntungan();
 
     return (
         <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-6 md:gap-4 md:px-5">
             <StaticCard ImgUrl={SellIcon} title="Penjualan" value={qty} unit={unit} price={price} />
             <StaticCard ImgUrl={PurchaseIcon} title="Pembelian" price={Total_Pembelian} />
-            <StaticCard ImgUrl={CapitaleIcon} title="Modal" price={Tot_Modal} />
-            <StaticCard ImgUrl={ProfitIcon} title="Keuntungan" price={Tot_Keuntungan} />
+            <StaticCard ImgUrl={CapitaleIcon} title="Modal" value={'Rp. ' + Tot_Modal} price={Omzet_Modal} />
+            <StaticCard ImgUrl={ProfitIcon} title="Keuntungan" value={'Rp. ' + Tot_Keuntungan} price={Omzet_Untung} />
         </div>
     );
 };

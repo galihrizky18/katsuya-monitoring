@@ -40,6 +40,16 @@ class KeuntunganModel extends Model
         return ($Tot_Untung - $Tot_Pengeluaran_Untung) + $Tot_Adjustment_Untung;
     }
 
+    public static function get_omzel_untung(){
+        $sql = "select ifnull(sum(b.keuntungan), 0) as Total_Omzet_Keuntungan ";
+        $sql .= "from TRX_Penjualan_Harian a ";
+        $sql .= "inner join TRX_Penjualan_Harian_detail b on a.No_Transaksi  = b.No_Transaksi ";
+        $sql .= "where a.Status is null";
+
+        return DB::select($sql, []);
+
+    }
+
     public static function get_all_keuntungan_chart(){
 
         $sql = "WITH pengeluaran AS ( ";
