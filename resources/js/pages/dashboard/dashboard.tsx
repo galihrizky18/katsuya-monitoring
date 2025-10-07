@@ -6,6 +6,7 @@ import { useChartDatas, useChartPenjualanByProduk } from '@/utility/zustand/char
 import useKeuntungan from '@/utility/zustand/keuntunganDatas';
 import useModal from '@/utility/zustand/modalDatas';
 import usePembelianDatas from '@/utility/zustand/pembelianDatas';
+import userPengeluaran from '@/utility/zustand/pengeluaranDatas';
 import usePenjualanStore from '@/utility/zustand/penjualanDatas';
 import React, { useEffect, useState } from 'react';
 
@@ -29,6 +30,11 @@ interface Untung {
     Omzet_Untung: number;
 }
 
+interface Pengeluaran {
+    modal: number;
+    untung: number;
+}
+
 interface DashboardProps {
     user: {
         nama: string;
@@ -41,6 +47,7 @@ interface DashboardProps {
         untung: Untung;
         charts: any;
         penjualan_by_product: any;
+        pengeluaran: Pengeluaran;
     };
 }
 
@@ -53,6 +60,8 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
     const { setTot_Keuntungan, Set_Omzet_Untung } = useKeuntungan();
     const { setPenjualan, setModal, setKeuntungan, setTahun } = useChartDatas();
     const { setProduk } = useChartPenjualanByProduk();
+
+    const { setPengeluaranModal, setPengeluaranUntung } = userPengeluaran();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -82,6 +91,9 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
         setModal(data.charts.modal);
         setKeuntungan(data.charts.keuntungan);
         setTahun(data.charts.tahun);
+
+        setPengeluaranModal(data.pengeluaran.modal);
+        setPengeluaranUntung(data.pengeluaran.untung);
 
         setProduk(data.penjualan_by_product.data);
         // console.log(data.penjualan_by_product.data);

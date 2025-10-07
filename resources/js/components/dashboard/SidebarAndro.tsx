@@ -13,14 +13,7 @@ const SidebarAndro: React.FC<SidebarAndroProps> = ({ opened, close }) => {
     const Logo = import.meta.env.VITE_APP_URL_LOGO;
 
     return (
-        <Drawer
-            opened={opened}
-            onClose={close}
-            padding="md"
-            size="70%"
-            position="left"
-            withCloseButton={false} // optional
-        >
+        <Drawer opened={opened} onClose={close} padding="md" size="70%" position="left" withCloseButton={false}>
             {/* Logo */}
             <div className="flex h-20 flex-row items-center overflow-hidden">
                 <img src={Logo} alt="Logo Katsuya" className="max-h-full max-w-full object-contain" />
