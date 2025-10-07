@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PenjualanController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +23,7 @@ Route::post("/login", [LoginController::class, "AuthUser"])->name("AuthUser");
 
 Route::middleware(['auth'])->group(function () {
     Route::get("/dashboard", [DashboardController::class, "show"])->name('dashboard');
+    Route::get("/penjualan", [PenjualanController::class, "show"])->name("penjualan_page");
 
     Route::post("/logout", [LoginController::class,"logout"])->name("logout");
 });

@@ -31,7 +31,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                     </div>
 
                     {/* Konten utama */}
-                    <div className="flex w-full flex-col gap-4 bg-transparent">
+                    <div className="flex w-full flex-col justify-between gap-4 bg-transparent">
                         <div className="mx-3 pt-5 pr-3 pb-2 pl-1">{children}</div>
                         <Footer />
                     </div>

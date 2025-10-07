@@ -1,4 +1,3 @@
-import ProdukSection from './ProdukSection';
 import MainChart from './ui/Chart/MainChart';
 import PenjualanProductChart from './ui/Chart/PenjualanProductChart';
 
@@ -13,9 +12,9 @@ const ChartSection = () => {
                 <div className="rounded-lg bg-white px-5 py-2 drop-shadow-lg">
                     <PenjualanProductChart />
                 </div>
-                <div className="rounded-lg bg-white px-5 py-2 drop-shadow-lg">
+                {/* <div className="rounded-lg bg-white px-5 py-2 drop-shadow-lg">
                     <ProdukSection />
-                </div>
+                </div> */}
             </div>
         </div>
     );

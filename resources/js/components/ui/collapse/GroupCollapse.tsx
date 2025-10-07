@@ -38,7 +38,7 @@ const GroupCollapse:React.FC<GroupCollapseProps> = ({children, title, Icon}) => 
         </div>
       </Group>
 
-      <Collapse in={opened} className='px-7'>
+      <Collapse in={opened} className='pl-7'>
         {children}
       </Collapse>
     </Box>

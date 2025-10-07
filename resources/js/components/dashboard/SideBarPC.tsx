@@ -1,7 +1,8 @@
 import { ScrollArea } from '@mantine/core';
-import { LayoutDashboard } from 'lucide-react';
+import { DollarSign, LayoutDashboard, NotebookTabs, ShoppingBasket, ShoppingCart, TrendingDown, TrendingUp } from 'lucide-react';
 import ButtonLogout from '../login/ButtonLogout';
 import SidebarMenu from '../ui/SidebarMenu';
+import GroupCollapse from '../ui/collapse/GroupCollapse';
 
 const SideBarPC = () => {
     const Logo = import.meta.env.VITE_APP_URL_LOGO;
@@ -21,9 +22,23 @@ const SideBarPC = () => {
                         Dashboard
                     </SidebarMenu>
 
-                    {/* <GroupCollapse title="Testing" Icon={LayoutDashboard}>
-                        <h1>Testing Collapse</h1>
-                    </GroupCollapse> */}
+                    <GroupCollapse title="Details" Icon={NotebookTabs}>
+                        <SidebarMenu Icon={ShoppingCart} href="/penjualan">
+                            Penjualan
+                        </SidebarMenu>
+                        <SidebarMenu Icon={ShoppingBasket} href="/dashboard">
+                            Pembelian
+                        </SidebarMenu>
+                        <SidebarMenu Icon={DollarSign} href="/dashboard">
+                            Modal
+                        </SidebarMenu>
+                        <SidebarMenu Icon={TrendingUp} href="/dashboard">
+                            Keuntungan
+                        </SidebarMenu>
+                        <SidebarMenu Icon={TrendingDown} href="/dashboard">
+                            Pengeluaran
+                        </SidebarMenu>
+                    </GroupCollapse>
                 </div>
             </ScrollArea>
             <div className="flex flex-col border-t border-gray-400 py-2">
