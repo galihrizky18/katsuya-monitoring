@@ -8,6 +8,7 @@ import useModal from '@/utility/zustand/modalDatas';
 import usePembelianDatas from '@/utility/zustand/pembelianDatas';
 import userPengeluaran from '@/utility/zustand/pengeluaranDatas';
 import usePenjualanStore from '@/utility/zustand/penjualanDatas';
+import { Head } from '@inertiajs/react';
 import React, { useEffect, useState } from 'react';
 
 interface Penjualan {
@@ -101,6 +102,7 @@ const dashboard: React.FC<DashboardProps> = ({ user, data }) => {
 
     return (
         <DashboardLayout>
+            <Head title="Dashboard" />
             <div className="flex h-full w-full flex-col gap-4">
                 {/* Header */}
                 <div className="grid grid-cols-1 font-sawarabi-mincho">

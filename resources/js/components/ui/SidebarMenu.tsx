@@ -28,7 +28,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ children, Icon, href }) => {
       
       
       <span
-        className={`font-semibold ${isMobile ? 'text-[.8rem]' : 'text-[.95rem]'}`}
+        className={`font-medium ${isMobile ? 'text-[.8rem]' : 'text-[.95rem]'}`}
       >
         {children}
       </span>
