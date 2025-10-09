@@ -11,7 +11,7 @@ class ProductModel extends Model
 
         $sql = "SELECT b.kode_produk, ";
         $sql .= "ifnull(( select z.produk from master_produk z where b.kode_produk  = z.kode_produk ), '-') as Nama_Produk, ";
-        $sql .= "SUM(a.Qty) AS Total_Qty ";
+        $sql .= "SUM(b.jumlah) AS Total_Qty ";
         $sql .= "FROM trx_penjualan_harian a ";
         $sql .= "INNER JOIN trx_penjualan_harian_detail b ";
         $sql .= "ON a.No_Transaksi = b.No_Transaksi ";

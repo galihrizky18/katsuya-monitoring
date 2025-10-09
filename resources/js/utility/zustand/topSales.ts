@@ -1,21 +1,35 @@
 import { create } from 'zustand';
 
-interface menus {
+interface Menu {
     menu: string;
     qty: number;
     harga: number;
 }
 
 interface TopSalesState {
-    menus: menus;
-    tambahMenu: (menus: menus) => void;
-    setMenus: (menus: menus[]) => void;
+    menus: Menu[];
+    tambahMenu: (item: Menu) => void;
+    setMenus: (data: Menu[]) => void;
     hapusMenu: (menu: string) => void;
-    resetMenusL: () => void;
+    resetMenus: () => void;
 }
 
-const useTopSales = create(() => ({
-    menu: [],
+const useTopSales = create<TopSalesState>((set) => ({
+    menus: [],
+
+    tambahMenu: (item) =>
+        set((state) => ({
+            menus: [...state.menus, item],
+        })),
+
+    setMenus: (data) => set({ menus: data }),
+
+    hapusMenu: (nama) =>
+        set((state) => ({
+            menus: state.menus.filter((item) => item.menu !== nama),
+        })),
+
+    resetMenus: () => set({ menus: [] }),
 }));
 
 export default useTopSales;
