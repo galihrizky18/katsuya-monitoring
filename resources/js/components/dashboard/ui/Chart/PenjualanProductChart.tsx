@@ -45,9 +45,11 @@ const PenjualanProductChart = (props: HighchartsReactProps) => {
                         distance: 20,
                     },
                     {
+                        enabled: true,
+                        distance: -35,
                         format: '{point.y} Pcs',
                         style: {
-                            fontSize: '.9rem',
+                            fontSize: '.8rem',
                             textOutline: 'none',
                             opacity: 0.7,
                             color: '#FFFFFF',
@@ -89,17 +91,17 @@ const PenjualanProductChart = (props: HighchartsReactProps) => {
                         },
                         plotOptions: {
                             pie: {
-                                size: '100%', // <-- Koreksi di sini
+                                size: '140%',
                                 dataLabels: [
                                     {
                                         enabled: false,
-                                        distance: 10,
+                                        distance: 40,
                                         style: {
                                             fontSize: '.7rem',
                                         },
                                     },
                                     {
-                                        enabled: true,
+                                        enabled: false,
                                         distance: -30,
                                         format: '{point.y} Pcs',
                                         style: {
